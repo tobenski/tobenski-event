@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /**
  * Fired during plugin activation
@@ -30,7 +30,20 @@ class Tobenski_Event_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+		self::create_page();
+	}
 
+	public static function create_page() {
+		$page = array(
+			'post_title' => 'Arrangementer',
+			'post_status' => 'publish',
+			'post_author' => 1,
+			'post_type' => 'page',
+			'post_name' => 'events',
+		); 
+
+		$page_exists = get_page_by_path( '/' . $page['page_name'] . '/', ARRAY_A, 'page');
+		if ($page_exists == null) : wp_insert_post( $page ); endif;
 	}
 
 }

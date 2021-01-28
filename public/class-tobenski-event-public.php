@@ -61,18 +61,6 @@ class Tobenski_Event_Public {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Tobenski_Event_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Tobenski_Event_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/tobenski-event-public.css', array(), $this->version, 'all' );
 
 	}
@@ -83,21 +71,29 @@ class Tobenski_Event_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Tobenski_Event_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Tobenski_Event_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tobenski-event-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tobenski-event-public.js', null, $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url(__FILE__). '/js/swiper-bundle.min.js', null, '6.4.2', true );
 	}
+
+	/**
+	 * Add a page-template to use with the events slug.
+	 *
+	 * @since 1.0.0
+	 * @param string $template [Template location]
+	 * @return string [Template location]
+	 */
+	public function page_templates( $template ) {
+		if (is_page('events')) :
+			// has slug events
+			return plugin_dir_path( __FILE__ ) . 'partials/page-events.php';
+		elseif (is_singular( 'event' )) :
+			// is singular view of type event
+			return plugin_dir_path( __FILE__ ) . 'partials/single-event.php';
+		else :
+			// is not event
+			return $template;
+		endif;
+
+	} 
 
 }

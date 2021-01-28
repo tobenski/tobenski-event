@@ -55,49 +55,263 @@ class Tobenski_Event_Admin {
 	}
 
 	/**
-	 * Register the stylesheets for the admin area.
+	 * Register the Event CPT
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
-	public function enqueue_styles() {
+	public function register_cpt()
+	{
+		$labels = array(
+			'name'                     => 'Arrangementer',
+			'singular_name'            => 'Arrangement',
+			'add_new'                  => 'Tilføj Ny',
+			'add_new_item'             => 'Tilføj Nyt Arrangement',
+			'edit_item'                => 'Rediger Arrangement',
+			'new_item'                 => 'Ny Arrangement',
+			'view_item'                => 'Vis Arrangement',
+			'view_items'               => 'Vis Arrangementer',
+			'search_items'             => 'Søg i Arrangementer',
+			'not_found'                => 'Ingen Arrangementer',
+			'not_found_in_trash'       => 'Ingen Arrangementer i Papirkurv',
+			'parent_item_colon'        => 'Parent Page:',
+			'all_items'                => 'Alle Arrangementer',
+			'archives'                 => 'Arrangement Arkiver',
+			'attributes'               => 'Arrangement Attributes',
+			'insert_into_item'         => 'Insert into Arrangement', 
+			'uploaded_to_this_item'    => 'Uploaded til denne Arrangement',
+			'featured_image'           => 'Udvalgt billede',
+			'set_featured_image'       => 'Vælg udvalgt billede',
+			'remove_featured_image'    => 'Fjern udvalgt billede',
+			'use_featured_image'       => 'Brug som udvalgt billede',
+			'filter_items_list'        => 'Filtrer Arrangement liste', 
+			'items_list_navigation'    => 'Arrangement liste navigation',
+			'items_list'               => 'Arrangement liste',
+			'item_published'           => 'Arrangement offentliggjort',
+			'item_published_privately' => 'Arrangement offentliggjort privat',
+			'item_reverted_to_draft'   => 'Arrangement lavet om til kladde',
+			'item_scheduled'           => 'Arrangement planlagt',
+			'item_updated'             => 'Arrangement opdateret',
+		);
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Tobenski_Event_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Tobenski_Event_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+		$args = array(
+			'rewrite' => array('slug' => 'events'),
+			'labels' => $labels,
+			'description' => 'Arrangementer til Det Gamle Posthus.',
+			'public' => true,
+			'hierarchical' => false,
+			'menu_position' => 23,
+			'menu_icon' => 'dashicons-beer',
+			'has_archive' => false,        
+			'taxonomies' => array( 'category' ),
+			'supports' => array(
+				'title', 'editor', 'page-attributes', 'thumbnail'
+			),	
+		);
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/tobenski-event-admin.css', array(), $this->version, 'all' );
+		register_post_type( 'event', $args); 
 
 	}
 
 	/**
-	 * Register the JavaScript for the admin area.
+	 * Register the Event Custom Fields
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
-	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Tobenski_Event_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Tobenski_Event_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tobenski-event-admin.js', array( 'jquery' ), $this->version, false );
-
+	public function register_custom_fields()
+	{
+		acf_add_local_field_group(array(
+            'key' => 'group_tob_9f9wji69ff',
+            'title' => 'Arrangementer',
+            'fields' => array(
+                array(
+                    'key' => 'field_tob_8asjulcrq0',
+                    'label' => 'Dato',
+                    'name' => 'dato',
+                    'type' => 'date_picker',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'display_format' => 'l j F Y',
+                    'return_format' => 'l \d\e\n j. F Y',
+                    'first_day' => 1,
+                ),
+                array(
+                    'key' => 'field_tob_zju9qwso8l',
+                    'label' => 'Start Tidspunkt',
+                    'name' => 'start_tidspunkt',
+                    'type' => 'time_picker',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'display_format' => 'H.i',
+                    'return_format' => 'H.i',
+                ),
+                array(
+                    'key' => 'field_tob_nj9jrev7ga',
+                    'label' => 'Slut Tidspunkt',
+                    'name' => 'slut_tidspunkt',
+                    'type' => 'time_picker',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'display_format' => 'H.i',
+                    'return_format' => 'H.i',
+                ),
+                array(
+                    'key' => 'field_tob_4iuca8otsv',
+                    'label' => 'Dato som tekst',
+                    'name' => 'dato_som_tekst',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => 'Skriv Dato med tekst fx. "fredag den 3. marts"',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+                array(
+                    'key' => 'field_tob_92l8dd01g9',
+                    'label' => 'Samlet Pris',
+                    'name' => 'samlet_pris',
+                    'type' => 'number',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'min' => '',
+                    'max' => '',
+                    'step' => '',
+                ),
+                array(
+                    'key' => 'field_tob_w2l5ukf0dm',
+                    'label' => 'Reserver Link',
+                    'name' => 'reserver_link',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+                array(
+                    'key' => 'field_tob_nqlirkpflc',
+                    'label' => 'Reserver Text',
+                    'name' => 'reserver_text',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+                array(
+                    'key' => 'field_tob_xfdjr8in2e',
+                    'label' => 'Menu',
+                    'name' => 'menu',
+                    'type' => 'wysiwyg',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'tabs' => 'all',
+                    'toolbar' => 'full',
+                    'media_upload' => 1,
+                    'delay' => 0,
+                ),
+                array(
+                    'key' => 'field_tob_zmwbsgg0lo',
+                    'label' => 'Events Secondary Image',
+                    'name' => 'event_secondary_image',
+                    'type' => 'image',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'return_format' => 'url',
+                    'preview_size' => 'medium',
+                    'library' => 'all',
+                    'min_width' => '',
+                    'min_height' => '',
+                    'min_size' => '',
+                    'max_width' => '',
+                    'max_height' => '',
+                    'max_size' => '',
+                    'mime_types' => '',
+                ),
+            ),
+            'location' => array(
+                array(
+                    array(
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'event',
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'normal',
+            'style' => 'default',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => true,
+            'description' => '',
+        ));
 	}
 
 }
