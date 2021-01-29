@@ -33,6 +33,14 @@ class Tobenski_Event_Activator {
 		self::create_page();
 	}
 
+	/**
+	 * Create a Event page if it doesnt all ready exist.
+	 * 
+	 * Check if a page with the slug events exists.
+	 * If it does, do nothing if not create it.
+	 * 
+	 * @since 1.0.0
+	 */
 	public static function create_page() {
 		$page = array(
 			'post_title' => 'Arrangementer',
