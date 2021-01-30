@@ -312,6 +312,94 @@ class Tobenski_Event_Admin {
             'active' => true,
             'description' => '',
         ));
+
+        acf_add_local_field_group(array(
+            'key' => 'group_tob_4xv384mu1i',
+            'title' => 'CTA',
+            'fields' => array(
+                array(
+                    'key' => 'field_tob_0v55grvk6v',
+                    'label' => 'CTA Tekst',
+                    'name' => 'cta_tekst',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => 'Kom og køb',
+                    'placeholder' => 'Tekst til CTA',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+                array(
+                    'key' => 'field_tob_1wtbr2rpp0',
+                    'label' => 'CTA Link',
+                    'name' => 'cta_link',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '/',
+                    'placeholder' => 'CTA destination',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+                array(
+                    'key' => 'field_tob_ilkhv8n3lh',
+                    'label' => 'CTA Buttton Text',
+                    'name' => 'cta_buttton_text',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => 'Tryk her',
+                    'placeholder' => 'CTA button text',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+            ),
+            'location' => array(
+                array(
+     				array(
+						'param' => 'page',
+						'operator' => '==',
+						'value' => get_page_by_path( '/events/', OBJECT, 'page' )->ID,
+					),
+				),
+                array(
+                    array(
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'event',
+                    ),
+				),
+            ),
+            'menu_order' => 0,
+            'position' => 'side',
+            'style' => 'default',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => true,
+            'description' => '',
+        ));
 	}
 
 }
