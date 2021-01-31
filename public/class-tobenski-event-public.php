@@ -93,7 +93,6 @@ class Tobenski_Event_Public {
 			// is not event
 			return $template;
 		endif;
-
 	} 
 
 }
