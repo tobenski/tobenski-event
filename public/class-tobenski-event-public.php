@@ -83,6 +83,13 @@ class Tobenski_Event_Public {
 	 * @return string [Template location]
 	 */
 	public function page_templates( $template ) {
+		// If not Events bail
+		if(!is_page('events') && !is_singular( 'event' )) : return $template; endif;
+		
+		// Load Styles and scripts for the page
+		$this->enqueue_styles();
+		$this->enqueue_scripts();
+
 		if (is_page('events')) :
 			// has slug events
 			return plugin_dir_path( __FILE__ ) . 'partials/page-events.php';
