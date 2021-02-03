@@ -1,4 +1,4 @@
-<?php 
+<?php
 $query = new WP_Query(array(
     'post_type' => 'page',
     'name' => 'events',
@@ -12,7 +12,7 @@ $query = new WP_Query(array(
 wp_reset_postdata();
 ?>
     
-    <section class="flex w-full max-w-full pt-12 pb-16 md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl">
+    <section class="flex w-full max-w-full pb-12 md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl">
         <div class="card card-parent">
             <div class="card-image">
                 <img src="<?php echo get_the_post_thumbnail_url(); ?>" />
@@ -55,7 +55,7 @@ wp_reset_postdata();
         </div>
     </section>
 
-    <section class="flex w-full max-w-full pt-12 pb-16 md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl">
+    <section class="flex w-full max-w-full pt-12 pb-16 md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl overflow-x-hidden">
         <div class="card card-parent card-mirror">
             <div class="card-image">
                 <img src="<?php the_field('event_secondary_image'); ?>" />

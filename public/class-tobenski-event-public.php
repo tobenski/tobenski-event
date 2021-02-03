@@ -88,7 +88,6 @@ class Tobenski_Event_Public {
 		
 		// Load Styles and scripts for the page
 		$this->enqueue_styles();
-		$this->enqueue_scripts();
 
 		if (is_page('events')) :
 			// has slug events
