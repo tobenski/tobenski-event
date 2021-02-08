@@ -9,7 +9,7 @@
             </div>                
             <div class="card-content">
                 <div class="card-header">
-                    <h4 class="text-center"><?php the_title(); ?></h4>
+                    <h2 class="text-center text-xl md:text-3xl"><?php the_title(); ?></h2>
                 </div>
                 <p><?php the_content(); ?></p>
             </div>            
@@ -17,6 +17,7 @@
     </section>
 
     <section id="content" class="flex flex-col p-0 w-screen max-w-full pb-12 md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl">
+        <h2 class="text-center text-xl md:text-3xl font-bold font-amiri mt-6">Kommmende Arrangementer</h2>
         <?php 
         $args = array(
             'posts_per_page' => -1,
