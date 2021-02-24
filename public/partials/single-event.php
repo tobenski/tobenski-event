@@ -48,14 +48,23 @@ wp_reset_postdata();
                         <h6 class="card-header-small"><?php the_field('start_tidspunkt'); ?> - <?php the_field('slut_tidspunkt'); ?></h6>
                     </div>
                 </div>
-                <div class="flex items-start justify-end m-12">
+                <div class="flex flex-col-reverse md:flex-row items-center md:items-start justify-end m-12">
+                    <a href="#menu" class="md:hidden mt-4 animate-bounce text-lg font-bold">
+                    <div class="flex flex-col items-center justify-center">
+                        <span>Menuen</span>
+                        <i class="far fa-arrow-alt-circle-down text-5xl"></i>
+                    </div>
+                    </a>
                     <a href="<?php the_field('reserver_link') ?>" class="btn btn-secondary"><?php the_field('reserver_text') ?></a>
+                </div>
+                <div class="flex items-center justify-end mx-12">
+
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="flex w-full max-w-full pt-12 pb-16 md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl overflow-x-hidden">
+    <section id="menu" class="flex w-full max-w-full pt-12 pb-16 md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl overflow-x-hidden">
         <div class="card card-parent card-mirror">
             <div class="card-image">
                 <img src="<?php the_field('event_secondary_image'); ?>" />
