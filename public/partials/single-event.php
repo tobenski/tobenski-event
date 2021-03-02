@@ -66,13 +66,13 @@ wp_reset_postdata();
 
     <section id="menu" class="flex w-full max-w-full pt-12 pb-16 md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl overflow-x-hidden">
         <div class="card card-parent card-mirror">
-            <div class="card-image">
+            <div class="card-image mb-10">
                 <img src="<?php the_field('event_secondary_image'); ?>" />
             </div>
             <div class="card-content">                
                 <div class="card-header">
-                    <h2>
-                        Menu 
+                    <h2 class="">
+                        Menu
                     </h2>
                 </div>
                 <p>
