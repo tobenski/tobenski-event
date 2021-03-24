@@ -79,7 +79,7 @@
                                                 <?php the_field('dato'); ?><br> klokken <?php the_field('start_tidspunkt'); ?>
                                             </p>
                                             <p class="mb-1 text-xs italic">
-                                                fra <?php the_field('samlet_pris'); ?>,- per person
+                                                <?php the_field('samlet_pris'); ?>,- per person
                                             </p>
                                         </div>
                                     </div>
